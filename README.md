@@ -139,4 +139,11 @@ Licencia MIT. Puedes usar, modificar y compartir libremente.
 
 ---
 
+## 🙏 Créditos y agradecimientos
+
+- Los datos y carátulas de videojuegos son proporcionados por [TheGamesDB.net](https://thegamesdb.net/).
+- Esta app no está afiliada oficialmente a TheGamesDB, pero agradece enormemente su labor y API pública.
+
+---
+
 > Desarrollado con ❤️ por [scorpio21](https://github.com/scorpio21)
