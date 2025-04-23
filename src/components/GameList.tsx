@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Card, CardMedia, CardContent, Typography, Dialog, DialogContent, DialogTitle, Box, Divider, Link, CircularProgress } from '@mui/material';
+import { Grid, Card, CardMedia, CardContent, Typography, Dialog, DialogContent, DialogTitle, Box, Divider, Link, CircularProgress, Alert, Chip, Grow, CardActionArea } from '@mui/material';
 import { fetchGameDetails } from '../services/api';
 
 interface Game {
@@ -7,18 +7,21 @@ interface Game {
   name: string;
   cover: string | null;
   release_date?: string | null;
-  platform?: string;
-  region_id?: number;
-  players?: string;
-  coop?: string;
-  developer?: string;
-  genres?: string;
-  overview?: string;
+  platform?: string | null;
+  region_id?: number | null;
+  players?: string | null;
+  coop?: string | null;
+  developer?: string | null;
+  genres?: string | null;
+  overview?: string | null;
   thegamesdb_url?: string;
 }
 
 interface GameListProps {
   games: Game[];
+  selectedPlatform?: any | null;
+  selectedRegion?: { id: number; label: string } | null;
+  search?: string;
 }
 
 const REGION_MAP: Record<number, string> = {
@@ -33,7 +36,7 @@ const REGION_MAP: Record<number, string> = {
   9: 'Korea',
 };
 
-const GameList = ({ games }: GameListProps) => {
+const GameList = ({ games, selectedPlatform, selectedRegion, search }: GameListProps) => {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [loadingDetails, setLoadingDetails] = useState(false);
   const [detailedGame, setDetailedGame] = useState<Game | null>(null);
@@ -61,49 +64,66 @@ const GameList = ({ games }: GameListProps) => {
     setLoadingDetails(false);
   };
 
+  const filteredGames = games;
+
   const gameToShow = detailedGame || selectedGame;
+
+  // Mostrar mensaje solo si se ha realizado una búsqueda
+  const showNoGamesMsg = search && filteredGames.length === 0;
 
   return (
     <>
-      <Grid container spacing={2}>
-        {games.map((game) => (
-          <Grid item xs={12} sm={6} md={4} key={game.id}>
-            <Card
-              style={{ cursor: game.cover ? 'pointer' : 'default', boxShadow: '0 4px 24px rgba(60, 60, 120, 0.07)' }}
-              onClick={() => handleCardClick(game)}
-            >
-              <CardMedia
-                component="img"
-                height="260"
-                image={game.cover ?? undefined}
-                alt={game.name}
-                sx={{ 
-                  objectFit: 'contain',
-                  bgcolor: '#f5f5f5',
-                  width: '100%',
-                  maxHeight: '260px',
-                  borderRadius: 2,
-                  '&.MuiCardMedia-root': {
-                    transition: 'transform 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'scale(1.05)'
-                    }
-                  }
-                }}
-                onError={handleImageError}
-              />
-              <CardContent>
-                <Typography variant="h6" noWrap>{game.name}</Typography>
-                {game.release_date && (
-                  <Typography variant="body2" color="text.secondary">
-                    {game.release_date}
-                  </Typography>
-                )}
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <Grow in timeout={600}>
+        <Grid container spacing={2}>
+          {showNoGamesMsg ? (
+            <Grid item xs={12}>
+              <Typography align="center" color="text.secondary" sx={{ mt: 4 }}>
+                No hay juegos con estos filtros.
+              </Typography>
+            </Grid>
+          ) : (
+            filteredGames.map((game) => (
+              <Grid item xs={12} sm={6} md={4} key={game.id}>
+                <Grow in timeout={500}>
+                  <Card
+                    className="game-card-glass"
+                    style={{ cursor: game.cover ? 'pointer' : 'default', boxShadow: '0 8px 32px rgba(25, 118, 210, 0.15)' }}
+                  >
+                    <CardActionArea onClick={() => handleCardClick(game)}>
+                      <CardMedia
+                        component="img"
+                        height="220"
+                        image={game.cover || '/no-cover.png'}
+                        alt={game.name}
+                        onError={handleImageError}
+                        sx={{ filter: 'drop-shadow(0 2px 12px #1976d2aa)' }}
+                      />
+                      <CardContent>
+                        <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: '#232526' }}>{game.name}</Typography>
+                        {game.release_date && (
+                          <Typography variant="body2" color="text.secondary">
+                            Fecha de lanzamiento: {game.release_date}
+                          </Typography>
+                        )}
+                        {game.platform && (
+                          <Typography variant="body2" color="text.secondary">
+                            Plataforma: {game.platform}
+                          </Typography>
+                        )}
+                        {game.region_id && (
+                          <Typography variant="body2" color="text.secondary">
+                            Región: {REGION_MAP[game.region_id]}
+                          </Typography>
+                        )}
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grow>
+              </Grid>
+            ))
+          )}
+        </Grid>
+      </Grow>
       <Dialog open={!!selectedGame} onClose={handleCloseModal} maxWidth="md">
         {gameToShow && (
           <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} alignItems="center">
@@ -123,7 +143,7 @@ const GameList = ({ games }: GameListProps) => {
                   <Typography variant="body1" gutterBottom>
                     {gameToShow.platform && (<><strong>Platform:</strong> {gameToShow.platform}<br /></>)}
                     {gameToShow.region_id && (<><strong>Region:</strong> {REGION_MAP[gameToShow.region_id] || gameToShow.region_id}<br /></>)}
-                    {gameToShow.release_date && (<><strong>Release Date:</strong> {gameToShow.release_date}<br /></>)}
+                    {gameToShow.release_date && gameToShow.release_date !== '0' && (<><strong>Release Date:</strong> {gameToShow.release_date}<br /></>)}
                     {gameToShow.players && (<><strong>Players:</strong> {gameToShow.players}<br /></>)}
                     {gameToShow.coop && (<><strong>Co-op:</strong> {gameToShow.coop}<br /></>)}
                     {gameToShow.developer && (<><strong>Developer:</strong> {gameToShow.developer}<br /></>)}
@@ -131,13 +151,17 @@ const GameList = ({ games }: GameListProps) => {
                   </Typography>
                 )
               }
-              {gameToShow.overview && (
-                <>
-                  <Divider sx={{ my: 2 }} />
-                  <Typography variant="body2" color="text.secondary" sx={{ whiteSpace: 'pre-line' }}>
-                    {gameToShow.overview}
-                  </Typography>
-                </>
+              {gameToShow.overview ? (
+                <Typography variant="body2" color="text.secondary" sx={{ whiteSpace: 'pre-line' }}>
+                  {gameToShow.overview}
+                </Typography>
+              ) : (
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+                  Algunos datos no están disponibles vía API.<br />
+                  <Link href={`https://thegamesdb.net/game.php?id=${gameToShow.id}`} target="_blank" rel="noopener">
+                    Consulta la ficha oficial en TheGamesDB.
+                  </Link>
+                </Typography>
               )}
               <Box mt={2} display="flex" gap={2}>
                 <Link href={`https://thegamesdb.net/game.php?id=${gameToShow.id}`} target="_blank" rel="noopener" underline="hover">
@@ -155,7 +179,7 @@ const GameList = ({ games }: GameListProps) => {
                       `Título: ${gameToShow.name}`,
                       gameToShow.platform && `Plataforma: ${gameToShow.platform}`,
                       gameToShow.region_id && `Región: ${REGION_MAP[gameToShow.region_id] || gameToShow.region_id}`,
-                      gameToShow.release_date && `Fecha de lanzamiento: ${gameToShow.release_date}`,
+                      gameToShow.release_date && gameToShow.release_date !== '0' && `Fecha de lanzamiento: ${gameToShow.release_date}`,
                       gameToShow.players && `Jugadores: ${gameToShow.players}`,
                       gameToShow.coop && `Co-op: ${gameToShow.coop}`,
                       gameToShow.developer && `Desarrollador: ${gameToShow.developer}`,

@@ -1,2 +1,6 @@
 .env
 .env.*
+
+# Añade esta línea si quieres ignorar imágenes temporales, pero NO ignores /assets si quieres que las imágenes del README se suban a GitHub
+# assets/
+node_modules

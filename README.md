@@ -1,35 +1,34 @@
-# 🎮 Buscador de Carátulas
+# 🎮 Buscador de Carátulas Retro
 
-![Buscador de Carátulas - Banner](https://cdn.thegamesdb.net/images/original/boxart/front/130095-1.jpg)
-
-Aplicación web moderna para buscar videojuegos y mostrar sus carátulas y detalles completos, utilizando la API oficial de TheGamesDB.
+Aplicación web moderna y profesional para buscar videojuegos retro y mostrar sus carátulas y detalles completos, utilizando la API oficial de TheGamesDB.
 
 <p align="center">
-  <a href="https://github.com/scorpio21" target="_blank"><img src="https://img.shields.io/badge/Autor-scorpio21-blue?style=flat-square" alt="Autor"></a>
+  <img src="/logo.svg" alt="Logo Retro" width="64" />
   <a href="https://thegamesdb.net/" target="_blank"><img src="https://img.shields.io/badge/API-TheGamesDB-orange?style=flat-square" alt="TheGamesDB"></a>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT">
   <img src="https://img.shields.io/badge/React-18+-blue?style=flat-square" alt="React">
   <img src="https://img.shields.io/badge/Vite-4+-yellow?style=flat-square" alt="Vite">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT">
 </p>
 
 ---
 
 ## ✨ Características principales
 
-- **Búsqueda rápida** de videojuegos por nombre y plataforma.
+- **Búsqueda rápida** de videojuegos retro por nombre y plataforma.
 - **Visualización de carátulas** en alta calidad.
 - Modal con ficha detallada: plataforma, región, fecha de lanzamiento, jugadores, co-op, desarrollador, géneros y descripción.
 - **Botón para copiar todos los datos** del juego al portapapeles.
 - **Descarga directa de la carátula**.
 - **Enlace a la ficha oficial** en TheGamesDB.
-- Interfaz responsive y moderna con Material UI.
+- Interfaz responsive y moderna con Material UI, animaciones y efecto glass.
+- Selector de plataformas filtrado solo por consolas retro, ordenadas alfabéticamente y con iconos personalizados.
 
 ---
 
-## 📸 Capturas de pantalla
+## 📸 Captura de pantalla
 
 <p align="center">
-  <img src="https://cdn.thegamesdb.net/images/original/boxart/front/130095-1.jpg" alt="Ejemplo carátula" width="220" />
+  <img src="/logo.svg" alt="Logo Retro" width="120" />
   <!-- Puedes añadir más capturas aquí -->
 </p>
 
@@ -42,36 +41,32 @@ Aplicación web moderna para buscar videojuegos y mostrar sus carátulas y detal
    git clone https://github.com/scorpio21/buscador_caratulas.git
    cd buscador_caratulas
    ```
-
 2. **Copia el archivo de variables de entorno:**
    ```bash
    cp .env.example .env
    ```
-
 3. **Consigue tu clave pública de TheGamesDB:**
    - Regístrate en [TheGamesDB](https://thegamesdb.net/) y obtén tu API Key pública.
    - Pega tu clave en el archivo `.env`:
      ```
      VITE_THEGAMESDB_API_KEY=tu_clave_publica
      ```
-
 4. **Instala dependencias:**
    ```bash
    npm install
    ```
-
 5. **Inicia el servidor de desarrollo:**
    ```bash
    npm run dev
    ```
-   La app estará disponible en `http://localhost:5173` (o el puerto que indique Vite).
+   La app estará disponible en `http://localhost:3000` (o el puerto que indique tu entorno).
 
 ---
 
 ## 🛡️ Seguridad y buenas prácticas
 
 - El archivo `.env` **no debe subirse nunca a GitHub**. Usa `.env.example` para compartir el formato.
-- Solo utiliza la clave pública en el frontend. La clave privada, si la tienes, úsala solo en backend.
+- Solo utiliza la clave pública en el frontend.
 - Si quieres máxima seguridad, implementa un backend proxy para ocultar la clave real.
 
 ---
@@ -89,11 +84,15 @@ Aplicación web moderna para buscar videojuegos y mostrar sus carátulas y detal
 
 ```
 ├── public/
+│   ├── logo.svg              # Logo retro personalizado
+│   ├── no-cover.png          # Imagen por defecto
+│   └── platforms/            # Iconos PNG/SVG de consolas retro
 ├── src/
-│   ├── components/      # Componentes React (GameList, etc)
-│   ├── services/        # Lógica de acceso a la API
+│   ├── components/           # Componentes React (GameList, PlatformComboBox, Footer)
+│   ├── services/             # Lógica de acceso a la API
+│   ├── App.tsx, App.css      # App principal y estilos
 │   └── ...
-├── .env.example         # Formato de variables de entorno
+├── .env.example              # Formato de variables de entorno
 ├── .gitignore
 ├── README.md
 └── package.json
@@ -101,11 +100,12 @@ Aplicación web moderna para buscar videojuegos y mostrar sus carátulas y detal
 
 ---
 
-## 💡 Notas adicionales
+## 💡 Notas y personalización
 
-- Si la API no devuelve todos los detalles de un juego, puedes consultar la ficha oficial mediante el enlace en el modal.
-- Puedes ampliar la app para buscar por género, desarrollador, año, etc. ¡Pull requests bienvenidos!
-- Si quieres desplegar la app en producción (Vercel, Netlify, etc.), recuerda configurar la variable de entorno en la plataforma elegida.
+- Solo se muestran plataformas retro, ordenadas y con iconos personalizados (añade tus PNG/SVG en `/public/platforms`).
+- El mensaje “No hay juegos con estos filtros.” solo aparece tras realizar una búsqueda sin resultados.
+- Puedes ampliar la app para buscar por género, desarrollador, año, etc.
+- El diseño es totalmente responsive, con animaciones y efecto glass.
 
 ---
 
@@ -114,8 +114,9 @@ Aplicación web moderna para buscar videojuegos y mostrar sus carátulas y detal
 ### ¿Por qué algunos juegos no muestran todos los datos?
 La API pública de TheGamesDB a veces no expone todos los campos que sí aparecen en la web. Siempre puedes consultar la ficha oficial con el enlace del modal.
 
-### ¿Puedo usar mi clave privada?
-No, nunca la expongas en el frontend. Solo úsala en backend para sincronizar datos o crear un mirror local.
+### ¿Cómo añado más consolas retro o iconos?
+- Añade el PNG/SVG a `/public/platforms/` y mapea el ID en `PlatformComboBox.tsx`.
+- Puedes ampliar el array de IDs retro en ese mismo archivo.
 
 ### ¿Cómo contribuyo?
 Haz un fork, crea una rama, haz tus cambios y abre un Pull Request. ¡Toda ayuda es bienvenida!

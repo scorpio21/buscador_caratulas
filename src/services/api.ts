@@ -69,7 +69,7 @@ export async function searchGamesByPlatform(query: string, platformId?: number) 
 
   // Formatear resultados para el frontend
   return games.map((game: any) => {
-    let cover = null;
+    let cover: string | null = null;
     if (images[game.id] && images[game.id].length > 0) {
       const front = images[game.id].find((img: any) => img.side === 'front');
       const filename = front ? front.filename : images[game.id][0].filename;
@@ -79,7 +79,7 @@ export async function searchGamesByPlatform(query: string, platformId?: number) 
         } else if (baseImgUrl && baseImgUrl.startsWith('http')) {
           cover = baseImgUrl + filename;
         } else {
-          cover = 'https://cdn.thegamesdb.net/images/original/' + filename;
+          cover = `https://cdn.thegamesdb.net/images/original/${filename}`;
         }
       }
     }
@@ -91,9 +91,9 @@ export async function searchGamesByPlatform(query: string, platformId?: number) 
       devs = game.developers.map((id: number) => developers[id]?.name).filter(Boolean).join(', ');
     }
     // Genres
-    let genreList = '';
+    let genreList: string | null = null;
     if (game.genres && Array.isArray(game.genres)) {
-      genreList = game.genres.map((id: number) => genres[id]?.name).filter(Boolean).join(', ');
+      genreList = game.genres.map((id: number) => genres[id]?.name).filter(Boolean).join(', ') || null;
     }
     return {
       id: game.id,
@@ -122,7 +122,22 @@ export async function fetchPlatforms() {
   return resp.data.data?.platforms || [];
 }
 
-export async function fetchGameDetails(gameId: number) {
+type GameDetails = {
+  id: number;
+  name: string;
+  release_date: string | null;
+  cover: string | null;
+  platform: string | null;
+  region_id: number | null;
+  players: string | null;
+  coop: string | null;
+  developer: string | null;
+  genres: string | null;
+  overview: string | null;
+  thegamesdb_url: string;
+};
+
+export async function fetchGameDetails(gameId: number): Promise<GameDetails> {
   const resp = await api.get('/Games/ByGameID', {
     params: {
       apikey: API_KEY,
@@ -136,7 +151,7 @@ export async function fetchGameDetails(gameId: number) {
   const platforms = resp.data.include?.platforms || {};
   const developers = resp.data.include?.developers || {};
   const genres = resp.data.include?.genres || {};
-  let cover = null;
+  let cover: string | null = null;
   if (images[gameId] && images[gameId].length > 0) {
     const front = images[gameId].find((img: any) => img.side === 'front');
     const filename = front ? front.filename : images[gameId][0].filename;
@@ -146,31 +161,31 @@ export async function fetchGameDetails(gameId: number) {
       } else if (baseImgUrl && baseImgUrl.startsWith('http')) {
         cover = baseImgUrl + filename;
       } else {
-        cover = 'https://cdn.thegamesdb.net/images/original/' + filename;
+        cover = `https://cdn.thegamesdb.net/images/original/${filename}`;
       }
     }
   }
-  const platform = platforms[game.platform]?.name || '';
-  let devs = '';
+  const platform = platforms[game.platform]?.name || null;
+  let devs: string | null = null;
   if (game.developers && Array.isArray(game.developers)) {
-    devs = game.developers.map((id: number) => developers[id]?.name).filter(Boolean).join(', ');
+    devs = game.developers.map((id: number) => developers[id]?.name).filter(Boolean).join(', ') || null;
   }
-  let genreList = '';
+  let genreList: string | null = null;
   if (game.genres && Array.isArray(game.genres)) {
-    genreList = game.genres.map((id: number) => genres[id]?.name).filter(Boolean).join(', ');
+    genreList = game.genres.map((id: number) => genres[id]?.name).filter(Boolean).join(', ') || null;
   }
   return {
     id: game.id,
     name: game.game_title,
-    release_date: game.release_date,
+    release_date: game.release_date || null,
     cover,
     platform,
-    region_id: game.region_id,
-    players: game.players,
-    coop: game.co_op,
+    region_id: game.region_id || null,
+    players: game.players || null,
+    coop: game.co_op || null,
     developer: devs,
     genres: genreList,
-    overview: game.overview,
+    overview: game.overview || null,
     thegamesdb_url: `https://thegamesdb.net/game.php?id=${gameId}`
   };
 }

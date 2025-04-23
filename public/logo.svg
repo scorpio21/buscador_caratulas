@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="retroBg" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#f7971e"/>
+      <stop offset="100%" stop-color="#ffd200"/>
+    </radialGradient>
+    <linearGradient id="retroBtn" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4145a"/>
+      <stop offset="100%" stop-color="#fbb03b"/>
+    </linearGradient>
+  </defs>
+  <circle cx="30" cy="30" r="30" fill="url(#retroBg)"/>
+  <!-- Retro controller body -->
+  <rect x="12" y="22" width="36" height="16" rx="8" fill="#333" stroke="#fff" stroke-width="2"/>
+  <!-- D-pad -->
+  <rect x="18" y="28" width="8" height="4" rx="2" fill="#fff"/>
+  <rect x="21" y="25" width="2" height="10" rx="1" fill="#fff"/>
+  <!-- Buttons -->
+  <circle cx="40" cy="30" r="3.2" fill="url(#retroBtn)" stroke="#fff" stroke-width="1.2"/>
+  <circle cx="47" cy="30" r="2.1" fill="#fff" stroke="#d4145a" stroke-width="1.2"/>
+  <!-- Start/Select -->
+  <rect x="32.2" y="28.9" width="2.4" height="1.2" rx="0.6" fill="#fff"/>
+  <rect x="35.7" y="28.9" width="2.4" height="1.2" rx="0.6" fill="#fff"/>
+</svg>
