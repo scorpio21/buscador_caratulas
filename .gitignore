@@ -1,6 +1,31 @@
+# Ignora archivos de entorno
 .env
 .env.*
 
-# Añade esta línea si quieres ignorar imágenes temporales, pero NO ignores /assets si quieres que las imágenes del README se suban a GitHub
-# assets/
-node_modules
+# Ignora dependencias
+node_modules/
+
+# Ignora lockfiles de dependencias de otros gestores (opcional)
+yarn.lock
+pnpm-lock.yaml
+
+# Ignora archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignora logs y archivos temporales
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignora carpetas de compilación (si usas build)
+dist/
+build/
+
+# Ignora archivos de PowerShell temporales
+*.ps1~
+
+# Puedes agregar más reglas según tus necesidades
+
+# No ignores la carpeta public/ ni los iconos, para que se suban a GitHub
+# No ignores plataformas_thegamesdb.txt ni README.md
