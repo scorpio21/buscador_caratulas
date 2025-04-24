@@ -3,7 +3,7 @@
 Aplicación web moderna y profesional para buscar videojuegos retro y mostrar sus carátulas y detalles completos, utilizando la API oficial de TheGamesDB.
 
 <p align="center">
-  <img src="/logo.svg" alt="Logo Retro" width="64" />
+  <img src="public/logo.svg" alt="Logo Retro" width="64" />
   <a href="https://thegamesdb.net/" target="_blank"><img src="https://img.shields.io/badge/API-TheGamesDB-orange?style=flat-square" alt="TheGamesDB"></a>
   <img src="https://img.shields.io/badge/React-18+-blue?style=flat-square" alt="React">
   <img src="https://img.shields.io/badge/Vite-4+-yellow?style=flat-square" alt="Vite">
@@ -28,7 +28,7 @@ Aplicación web moderna y profesional para buscar videojuegos retro y mostrar su
 ## 📸 Captura de pantalla
 
 <p align="center">
-  <img src="/logo.svg" alt="Logo Retro" width="120" />
+  <img src="public/logo.svg" alt="Logo Retro" width="120" />
   <!-- Puedes añadir más capturas aquí -->
 </p>
 
