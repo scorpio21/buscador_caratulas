@@ -1,0 +1,54 @@
+# Nombres sugeridos para iconos de consolas populares
+# Renombra tus archivos SVG o PNG según esta lista y colócalos en /public/platforms/
+
+# PlayStation
+sony-playstation.png
+sony-playstation-2.svg
+sony-playstation-3.svg
+sony-playstation-4.svg
+sony-playstation-5.svg
+sony-playstation-portable.svg
+sony-psvita.svg
+
+# Nintendo
+nintendo-nes.svg
+super-nintendo.svg
+nintendo-64.svg
+nintendo-gamecube.svg
+nintendo-wii.svg
+nintendo-wiiu.svg
+nintendo-switch.svg
+nintendo-ds.svg
+nintendo-3ds.svg
+game-boy.svg
+game-boy-color.svg
+game-boy-advance.svg
+
+# Sega
+sega-megadrive.svg
+sega-saturn.svg
+sega-dreamcast.svg
+sega-mastersystem.svg
+
+# Xbox
+xbox.svg
+xbox-360.svg
+xbox-one.svg
+xbox-series-x.svg
+
+# Otros clásicos
+neo-geo.svg
+atari-2600.svg
+turbografx-16.svg
+pc.svg
+arcade.svg
+amiga.svg
+commodore-64.svg
+intellivision.svg
+colecovision.svg
+vectrex.svg
+
+# Placeholder
+no-cover.png
+
+# Puedes agregar más según tus necesidades y tu archivo plataformas_thegamesdb.txt
