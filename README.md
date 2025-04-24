@@ -108,6 +108,63 @@ Aplicación web moderna y profesional para buscar videojuegos retro y mostrar su
 
 ---
 
+## 🎮 Plataformas disponibles en el selector
+
+<table align="center">
+  <tr>
+    <th>Icono</th>
+    <th>Nombre</th>
+    <th>ID</th>
+  </tr>
+  <tr><td><img src="public/platforms/sony-playstation.png" width="36" /></td><td>PlayStation 1</td><td>10</td></tr>
+  <tr><td><img src="public/platforms/sony-playstation-2.svg" width="36" /></td><td>PlayStation 2</td><td>11</td></tr>
+  <tr><td><img src="public/platforms/sony-playstation-3.svg" width="36" /></td><td>PlayStation 3</td><td>12</td></tr>
+  <tr><td><img src="public/platforms/sony-playstation-4.svg" width="36" /></td><td>PlayStation 4</td><td>4919</td></tr>
+  <tr><td><img src="public/platforms/sony-playstation-5.svg" width="36" /></td><td>PlayStation 5</td><td>4980</td></tr>
+  <tr><td><img src="public/platforms/sony-playstation-portable.svg" width="36" /></td><td>PlayStation Portable</td><td>13</td></tr>
+  <tr><td><img src="public/platforms/sony-psvita.svg" width="36" /></td><td>PlayStation Vita</td><td>39</td></tr>
+  <tr><td><img src="public/platforms/amiga.svg" width="36" /></td><td>Amiga</td><td>4911</td></tr>
+  <tr><td><img src="public/platforms/amiga-cd32.png" width="36" /></td><td>Amiga CD32</td><td>4947</td></tr>
+  <tr><td><img src="public/platforms/xbox.png" width="36" /></td><td>Xbox</td><td>14</td></tr>
+  <tr><td><img src="public/platforms/xbox-360.png" width="36" /></td><td>Xbox 360</td><td>15</td></tr>
+  <tr><td><img src="public/platforms/neo-geo.png" width="36" /></td><td>Neo Geo</td><td>24</td></tr>
+  <tr><td><img src="public/platforms/nintendo-ds.png" width="36" /></td><td>Nintendo DS</td><td>8</td></tr>
+  <tr><td><img src="public/platforms/nintendo-nes.png" width="36" /></td><td>Nintendo NES</td><td>7</td></tr>
+  <tr><td><img src="public/platforms/game-boy-color.png" width="36" /></td><td>Game Boy Color</td><td>41</td></tr>
+  <tr><td><img src="public/platforms/nintendo-wii.png" width="36" /></td><td>Nintendo Wii</td><td>9</td></tr>
+  <tr><td><img src="public/platforms/nintendo-wiiu.png" width="36" /></td><td>Nintendo Wii U</td><td>38</td></tr>
+  <tr><td><img src="public/platforms/sega-32x.png" width="36" /></td><td>Sega 32X</td><td>33</td></tr>
+  <tr><td><img src="public/platforms/sega-cd.png" width="36" /></td><td>Sega CD</td><td>21</td></tr>
+  <tr><td><img src="public/platforms/sega-dreamcast.png" width="36" /></td><td>Sega Dreamcast</td><td>16</td></tr>
+  <tr><td><img src="public/platforms/sega-genesis.png" width="36" /></td><td>Sega Genesis</td><td>18</td></tr>
+  <tr><td><img src="public/platforms/sega-mastersystem.png" width="36" /></td><td>Sega Master System</td><td>35</td></tr>
+  <tr><td><img src="public/platforms/sega-megadrive.png" width="36" /></td><td>Sega Mega Drive</td><td>36</td></tr>
+</table>
+
+<p align="center"><i>Cada plataforma mostrada en el selector corresponde a un ID único de TheGamesDB y a un icono personalizado ubicado en <code>/public/platforms/</code>. Puedes ampliar la lista añadiendo nuevos iconos y asociando su ID en <code>PlatformComboBox.tsx</code>. El ID es el valor que usa la API para filtrar los juegos por consola.</i></p>
+
+### 🛠️ ¿Cómo añadir una nueva plataforma?
+
+1. **Agrega el icono** (PNG o SVG) en la carpeta <code>/public/platforms/</code>.
+   - Ejemplo: <code>nintendo-gamecube.png</code>
+2. **Busca el ID de la plataforma** en TheGamesDB (por ejemplo, para GameCube es <code>23</code>).
+   - Consulta la lista de IDs de plataformas en [TheGamesDB Platforms](https://thegamesdb.net/platforms).
+3. **Edita <code>PlatformComboBox.tsx</code>** y añade la entrada en <code>CUSTOM_PLATFORM_ICONS</code>:
+   ```typescript
+   23: '/platforms/nintendo-gamecube.png', // Nintendo GameCube
+   ```
+4. **(Opcional)** Añade el ID al array <code>RETRO_PLATFORM_IDS</code> si quieres que aparezca en el selector:
+   ```typescript
+   const RETRO_PLATFORM_IDS = [
+     ...,
+     23, // Nintendo GameCube
+   ];
+   ```
+5. **Guarda y reinicia el servidor de desarrollo**. ¡La nueva consola aparecerá en el selector con su icono!
+
+
+---
+
 ## 💡 Notas y personalización
 
 - Solo se muestran plataformas retro, ordenadas y con iconos personalizados (añade tus PNG/SVG en `/public/platforms`).
