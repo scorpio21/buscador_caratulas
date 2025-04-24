@@ -12,6 +12,14 @@ Aplicación web moderna y profesional para buscar videojuegos retro y mostrar su
 
 ---
 
+## 📸 Vista del buscador
+
+<p align="center">
+  <img src="public/buscador.png" alt="Vista del buscador" width="600" />
+</p>
+
+---
+
 ## ✨ Características principales
 
 - **Búsqueda rápida** de videojuegos retro por nombre y plataforma.
