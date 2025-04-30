@@ -12,11 +12,21 @@ Aplicación web moderna y profesional para buscar videojuegos retro y mostrar su
 
 ---
 
-## 📸 Vista del buscador
+## 🏁 Cómo iniciar el proyecto
 
-<p align="center">
-  <img src="public/buscador.png" alt="Vista del buscador" width="600" />
-</p>
+Para evitar olvidos, aquí tienes los pasos rápidos para arrancar la aplicación en modo desarrollo:
+
+1. Instala las dependencias si aún no lo has hecho:
+   ```bash
+   npm install
+   ```
+2. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+3. Abre tu navegador en [http://localhost:3000](http://localhost:3000)
+
+Recuerda: cada vez que quieras trabajar en el proyecto, ejecuta `npm run dev` desde la carpeta raíz.
 
 ---
 
@@ -30,6 +40,14 @@ Aplicación web moderna y profesional para buscar videojuegos retro y mostrar su
 - **Enlace a la ficha oficial** en TheGamesDB.
 - Interfaz responsive y moderna con Material UI, animaciones y efecto glass.
 - Selector de plataformas filtrado solo por consolas retro, ordenadas alfabéticamente y con iconos personalizados.
+
+---
+
+## 📸 Vista del buscador
+
+<p align="center">
+  <img src="public/buscador.png" alt="Vista del buscador" width="600" />
+</p>
 
 ---
 
