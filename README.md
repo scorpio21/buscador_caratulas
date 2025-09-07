@@ -55,36 +55,43 @@ Recuerda: cada vez que quieras trabajar en el proyecto, ejecuta `npm run dev` de
 
 <!-- Puedes añadir más capturas aquí -->
 
----
-
 ## 🚀 Instalación y uso rápido
 
 1. **Clona el repositorio:**
+
    ```bash
    git clone https://github.com/scorpio21/buscador_caratulas.git
    cd buscador_caratulas
    ```
+
 2. **Copia el archivo de variables de entorno:**
+
    ```bash
    cp .env.example .env
    ```
+
 3. **Consigue tu clave pública de TheGamesDB:**
    - Regístrate en [TheGamesDB](https://thegamesdb.net/) y obtén tu API Key pública.
    - Pega tu clave en el archivo `.env`:
+
      ```bash
      VITE_THEGAMESDB_API_KEY=tu_clave_publica
+
      ```
+
 4. **Instala dependencias:**
+
    ```bash
    npm install
    ```
+
 5. **Inicia el servidor de desarrollo:**
+
    ```bash
    npm run dev
    ```
-   La app estará disponible en `http://localhost:5173` (o el puerto que indique tu entorno y que muestre la consola de Vite).
 
----
+   La app estará disponible en `http://localhost:5173` (o el puerto que indique tu entorno y que muestre la consola de Vite).
 
 ## 🛡️ Seguridad y buenas prácticas
 
@@ -155,23 +162,26 @@ _Cada plataforma mostrada en el selector corresponde a un ID único de TheGamesD
 
 ### 🛠️ ¿Cómo añadir una nueva plataforma?
 
-1. **Agrega el icono** (PNG o SVG) en la carpeta <code>/public/platforms/</code>.
-   - Ejemplo: <code>nintendo-gamecube.png</code>
-2. **Busca el ID de la plataforma** en TheGamesDB (por ejemplo, para GameCube es <code>23</code>).
+1. **Agrega el icono** (PNG o SVG) en la carpeta `/public/platforms/`.
+   - Ejemplo: `nintendo-gamecube.png`
+2. **Busca el ID de la plataforma** en TheGamesDB (por ejemplo, para GameCube es `23`).
    - Consulta la lista de IDs de plataformas en [TheGamesDB Platforms](https://thegamesdb.net/platforms).
-3. **Edita <code>PlatformComboBox.tsx</code>** y añade la entrada en <code>CUSTOM_PLATFORM_ICONS</code>:
+3. **Edita `PlatformComboBox.tsx`** y añade la entrada en `CUSTOM_PLATFORM_ICONS`:
+
    ```typescript
    23: '/platforms/nintendo-gamecube.png', // Nintendo GameCube
    ```
-4. **(Opcional)** Añade el ID al array <code>RETRO_PLATFORM_IDS</code> si quieres que aparezca en el selector:
+
+4. **(Opcional)** Añade el ID al array `RETRO_PLATFORM_IDS` si quieres que aparezca en el selector:
+
    ```typescript
    const RETRO_PLATFORM_IDS = [
      ...,
      23, // Nintendo GameCube
    ];
    ```
-5. **Guarda y reinicia el servidor de desarrollo**. ¡La nueva consola aparecerá en el selector con su icono!
 
+5. **Guarda y reinicia el servidor de desarrollo**. ¡La nueva consola aparecerá en el selector con su icono!
 
 ---
 
@@ -187,13 +197,16 @@ _Cada plataforma mostrada en el selector corresponde a un ID único de TheGamesD
 ## ❓ FAQ
 
 ### ¿Por qué algunos juegos no muestran todos los datos?
+
 La API pública de TheGamesDB a veces no expone todos los campos que sí aparecen en la web. Siempre puedes consultar la ficha oficial con el enlace del modal.
 
 ### ¿Cómo añado más consolas retro o iconos?
+
 - Añade el PNG/SVG a `/public/platforms/` y mapea el ID en `PlatformComboBox.tsx`.
 - Puedes ampliar el array de IDs retro en ese mismo archivo.
 
 ### ¿Cómo contribuyo?
+
 Haz un fork, crea una rama, haz tus cambios y abre un Pull Request. ¡Toda ayuda es bienvenida!
 
 ---
