@@ -41,7 +41,7 @@ function App() {
       <CssBaseline />
       <Container maxWidth="md" sx={{ py: 4 }}>
         <Box display="flex" alignItems="center" justifyContent="center" sx={{ mb: 2 }}>
-          <img src="/logo.svg" alt="Logo Carátulas" width={54} height={54} style={{ marginRight: 16, filter: 'drop-shadow(0 2px 8px #1976d2cc)' }} />
+          <img src="/logo.svg" alt="Logo Carátulas" width={54} height={54} className="logo-imagen" />
           <Typography variant="h3" align="center" gutterBottom className="buscador-title" sx={{ fontWeight: 700, letterSpacing: 2, color: '#283593', mb: 0 }}>
             Buscador de Carátulas
           </Typography>
@@ -59,7 +59,7 @@ function App() {
                   />
                 </Box>
                 <Box flex={1} width="100%">
-                  <form onSubmit={e => { e.preventDefault(); handleSearch(); }} style={{ width: '100%' }}>
+                  <form onSubmit={e => { e.preventDefault(); handleSearch(); }} className="formulario-ancho-completo">
                     <Paper
                       component="div"
                       className="buscador-paper"

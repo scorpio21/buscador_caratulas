@@ -2,13 +2,9 @@
 
 Aplicación web moderna y profesional para buscar videojuegos retro y mostrar sus carátulas y detalles completos, utilizando la API oficial de TheGamesDB.
 
-<p align="center">
-  <img src="public/logo.svg" alt="Logo Retro" width="64" />
-  <a href="https://thegamesdb.net/" target="_blank"><img src="https://img.shields.io/badge/API-TheGamesDB-orange?style=flat-square" alt="TheGamesDB"></a>
-  <img src="https://img.shields.io/badge/React-18+-blue?style=flat-square" alt="React">
-  <img src="https://img.shields.io/badge/Vite-4+-yellow?style=flat-square" alt="Vite">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT">
-</p>
+![Logo Retro](public/logo.svg)
+
+[![TheGamesDB](https://img.shields.io/badge/API-TheGamesDB-orange?style=flat-square)](https://thegamesdb.net/) ![React](https://img.shields.io/badge/React-18%2B-blue?style=flat-square) ![Vite](https://img.shields.io/badge/Vite-4%2B-yellow?style=flat-square) ![MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ---
 
@@ -17,14 +13,18 @@ Aplicación web moderna y profesional para buscar videojuegos retro y mostrar su
 Para evitar olvidos, aquí tienes los pasos rápidos para arrancar la aplicación en modo desarrollo:
 
 1. Instala las dependencias si aún no lo has hecho:
+  
    ```bash
    npm install
    ```
+
 2. Inicia el servidor de desarrollo:
+
    ```bash
    npm run dev
    ```
-3. Abre tu navegador en [http://localhost:3000](http://localhost:3000)
+
+3. Abre tu navegador en [http://localhost:5173](http://localhost:5173)
 
 Recuerda: cada vez que quieras trabajar en el proyecto, ejecuta `npm run dev` desde la carpeta raíz.
 
@@ -45,18 +45,15 @@ Recuerda: cada vez que quieras trabajar en el proyecto, ejecuta `npm run dev` de
 
 ## 📸 Vista del buscador
 
-<p align="center">
-  <img src="public/buscador.png" alt="Vista del buscador" width="600" />
-</p>
+![Vista del buscador](public/buscador.png)
 
 ---
 
 ## 📸 Captura de pantalla
 
-<p align="center">
-  <img src="public/logo.svg" alt="Logo Retro" width="120" />
-  <!-- Puedes añadir más capturas aquí -->
-</p>
+![Logo Retro](public/logo.svg)
+
+<!-- Puedes añadir más capturas aquí -->
 
 ---
 
@@ -74,7 +71,7 @@ Recuerda: cada vez que quieras trabajar en el proyecto, ejecuta `npm run dev` de
 3. **Consigue tu clave pública de TheGamesDB:**
    - Regístrate en [TheGamesDB](https://thegamesdb.net/) y obtén tu API Key pública.
    - Pega tu clave en el archivo `.env`:
-     ```
+     ```bash
      VITE_THEGAMESDB_API_KEY=tu_clave_publica
      ```
 4. **Instala dependencias:**
@@ -85,7 +82,7 @@ Recuerda: cada vez que quieras trabajar en el proyecto, ejecuta `npm run dev` de
    ```bash
    npm run dev
    ```
-   La app estará disponible en `http://localhost:3000` (o el puerto que indique tu entorno).
+   La app estará disponible en `http://localhost:5173` (o el puerto que indique tu entorno y que muestre la consola de Vite).
 
 ---
 
@@ -108,7 +105,7 @@ Recuerda: cada vez que quieras trabajar en el proyecto, ejecuta `npm run dev` de
 
 ## 📦 Estructura del proyecto
 
-```
+```text
 ├── public/
 │   ├── logo.svg              # Logo retro personalizado
 │   ├── no-cover.png          # Imagen por defecto
@@ -128,38 +125,33 @@ Recuerda: cada vez que quieras trabajar en el proyecto, ejecuta `npm run dev` de
 
 ## 🎮 Plataformas disponibles en el selector
 
-<table align="center">
-  <tr>
-    <th>Icono</th>
-    <th>Nombre</th>
-    <th>ID</th>
-  </tr>
-  <tr><td><img src="public/platforms/sony-playstation.png" width="36" /></td><td>PlayStation 1</td><td>10</td></tr>
-  <tr><td><img src="public/platforms/sony-playstation-2.svg" width="36" /></td><td>PlayStation 2</td><td>11</td></tr>
-  <tr><td><img src="public/platforms/sony-playstation-3.svg" width="36" /></td><td>PlayStation 3</td><td>12</td></tr>
-  <tr><td><img src="public/platforms/sony-playstation-4.svg" width="36" /></td><td>PlayStation 4</td><td>4919</td></tr>
-  <tr><td><img src="public/platforms/sony-playstation-5.svg" width="36" /></td><td>PlayStation 5</td><td>4980</td></tr>
-  <tr><td><img src="public/platforms/sony-playstation-portable.svg" width="36" /></td><td>PlayStation Portable</td><td>13</td></tr>
-  <tr><td><img src="public/platforms/sony-psvita.svg" width="36" /></td><td>PlayStation Vita</td><td>39</td></tr>
-  <tr><td><img src="public/platforms/amiga.svg" width="36" /></td><td>Amiga</td><td>4911</td></tr>
-  <tr><td><img src="public/platforms/amiga-cd32.png" width="36" /></td><td>Amiga CD32</td><td>4947</td></tr>
-  <tr><td><img src="public/platforms/xbox.png" width="36" /></td><td>Xbox</td><td>14</td></tr>
-  <tr><td><img src="public/platforms/xbox-360.png" width="36" /></td><td>Xbox 360</td><td>15</td></tr>
-  <tr><td><img src="public/platforms/neo-geo.png" width="36" /></td><td>Neo Geo</td><td>24</td></tr>
-  <tr><td><img src="public/platforms/nintendo-ds.png" width="36" /></td><td>Nintendo DS</td><td>8</td></tr>
-  <tr><td><img src="public/platforms/nintendo-nes.png" width="36" /></td><td>Nintendo NES</td><td>7</td></tr>
-  <tr><td><img src="public/platforms/game-boy-color.png" width="36" /></td><td>Game Boy Color</td><td>41</td></tr>
-  <tr><td><img src="public/platforms/nintendo-wii.png" width="36" /></td><td>Nintendo Wii</td><td>9</td></tr>
-  <tr><td><img src="public/platforms/nintendo-wiiu.png" width="36" /></td><td>Nintendo Wii U</td><td>38</td></tr>
-  <tr><td><img src="public/platforms/sega-32x.png" width="36" /></td><td>Sega 32X</td><td>33</td></tr>
-  <tr><td><img src="public/platforms/sega-cd.png" width="36" /></td><td>Sega CD</td><td>21</td></tr>
-  <tr><td><img src="public/platforms/sega-dreamcast.png" width="36" /></td><td>Sega Dreamcast</td><td>16</td></tr>
-  <tr><td><img src="public/platforms/sega-genesis.png" width="36" /></td><td>Sega Genesis</td><td>18</td></tr>
-  <tr><td><img src="public/platforms/sega-mastersystem.png" width="36" /></td><td>Sega Master System</td><td>35</td></tr>
-  <tr><td><img src="public/platforms/sega-megadrive.png" width="36" /></td><td>Sega Mega Drive</td><td>36</td></tr>
-</table>
+| Icono | Nombre | ID |
+|---|---|---|
+| ![PS1](public/platforms/sony-playstation.png) | PlayStation 1 | 10 |
+| ![PS2](public/platforms/sony-playstation-2.svg) | PlayStation 2 | 11 |
+| ![PS3](public/platforms/sony-playstation-3.svg) | PlayStation 3 | 12 |
+| ![PS4](public/platforms/sony-playstation-4.svg) | PlayStation 4 | 4919 |
+| ![PS5](public/platforms/sony-playstation-5.svg) | PlayStation 5 | 4980 |
+| ![PSP](public/platforms/sony-playstation-portable.svg) | PlayStation Portable | 13 |
+| ![PSVita](public/platforms/sony-psvita.svg) | PlayStation Vita | 39 |
+| ![Amiga](public/platforms/amiga.svg) | Amiga | 4911 |
+| ![Amiga CD32](public/platforms/amiga-cd32.png) | Amiga CD32 | 4947 |
+| ![Xbox](public/platforms/xbox.png) | Xbox | 14 |
+| ![Xbox 360](public/platforms/xbox-360.png) | Xbox 360 | 15 |
+| ![Neo Geo](public/platforms/neo-geo.png) | Neo Geo | 24 |
+| ![Nintendo DS](public/platforms/nintendo-ds.png) | Nintendo DS | 8 |
+| ![Nintendo NES](public/platforms/nintendo-nes.png) | Nintendo NES | 7 |
+| ![Game Boy Color](public/platforms/game-boy-color.png) | Game Boy Color | 41 |
+| ![Nintendo Wii](public/platforms/nintendo-wii.png) | Nintendo Wii | 9 |
+| ![Nintendo Wii U](public/platforms/nintendo-wiiu.png) | Nintendo Wii U | 38 |
+| ![Sega 32X](public/platforms/sega-32x.png) | Sega 32X | 33 |
+| ![Sega CD](public/platforms/sega-cd.png) | Sega CD | 21 |
+| ![Sega Dreamcast](public/platforms/sega-dreamcast.png) | Sega Dreamcast | 16 |
+| ![Sega Genesis](public/platforms/sega-genesis.png) | Sega Genesis | 18 |
+| ![Sega Master System](public/platforms/sega-mastersystem.png) | Sega Master System | 35 |
+| ![Sega Mega Drive](public/platforms/sega-megadrive.png) | Sega Mega Drive | 36 |
 
-<p align="center"><i>Cada plataforma mostrada en el selector corresponde a un ID único de TheGamesDB y a un icono personalizado ubicado en <code>/public/platforms/</code>. Puedes ampliar la lista añadiendo nuevos iconos y asociando su ID en <code>PlatformComboBox.tsx</code>. El ID es el valor que usa la API para filtrar los juegos por consola.</i></p>
+_Cada plataforma mostrada en el selector corresponde a un ID único de TheGamesDB y a un icono personalizado ubicado en `/public/platforms/`. Puedes ampliar la lista añadiendo nuevos iconos y asociando su ID en `PlatformComboBox.tsx`. El ID es el valor que usa la API para filtrar los juegos por consola._
 
 ### 🛠️ ¿Cómo añadir una nueva plataforma?
 

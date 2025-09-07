@@ -1,0 +1,28 @@
+/* Estilos extraídos desde componentes React para evitar inline styles */
+
+.logo-imagen {
+  margin-right: 16px;
+  filter: drop-shadow(0 2px 8px #1976d2cc);
+}
+
+.formulario-ancho-completo {
+  width: 100%;
+}
+
+/* Imagen en el modal de detalles del juego */
+.imagen-detalle-juego {
+  max-height: 400px;
+  max-width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(60, 60, 120, 0.2);
+}
+
+/* Botón para copiar datos en el modal */
+.boton-copiar-datos {
+  cursor: pointer;
+  padding: 6px 16px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  background: #fafafa;
+  font-size: 14px;
+}

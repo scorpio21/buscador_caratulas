@@ -128,7 +128,7 @@ const GameList = ({ games, selectedPlatform, selectedRegion, search }: GameListP
         {gameToShow && (
           <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} alignItems="center">
             <Box p={2}>
-              <img src={gameToShow.cover ?? '/no-cover.png'} alt={gameToShow.name} style={{ maxHeight: 400, maxWidth: 280, borderRadius: 12, boxShadow: '0 8px 32px rgba(60, 60, 120, 0.2)' }} />
+              <img src={gameToShow.cover ?? '/no-cover.png'} alt={gameToShow.name} className="imagen-detalle-juego" />
             </Box>
             <DialogContent>
               <DialogTitle>{gameToShow.name}</DialogTitle>
@@ -173,7 +173,7 @@ const GameList = ({ games, selectedPlatform, selectedRegion, search }: GameListP
                   </Link>
                 )}
                 <button
-                  style={{ cursor: 'pointer', padding: '6px 16px', borderRadius: 4, border: '1px solid #aaa', background: '#fafafa', fontSize: 14 }}
+                  className="boton-copiar-datos"
                   onClick={() => {
                     const datos = [
                       `Título: ${gameToShow.name}`,
