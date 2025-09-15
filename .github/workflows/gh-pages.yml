@@ -1,6 +1,9 @@
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy to GitHub Pages
-
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 on:
   push:
     branches:
